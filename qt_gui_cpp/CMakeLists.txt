@@ -9,15 +9,7 @@ endif()
 
 find_package(ament_cmake REQUIRED)
 
-if(WIN32)
-  message(STATUS "${PROJECT_NAME} is not yet supported on Windows. Package will not be built.")
-  ament_package()
-  file(WRITE "${CMAKE_CURRENT_BINARY_DIR}/plugin.xml"
-    "<library path=\"src\"/>")
-  install(FILES "${CMAKE_CURRENT_BINARY_DIR}/plugin.xml"
-    DESTINATION share/${PROJECT_NAME})
-  return()
-endif()
+set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)
 
 find_package(pluginlib REQUIRED)
 find_package(Qt5 REQUIRED COMPONENTS Widgets)
